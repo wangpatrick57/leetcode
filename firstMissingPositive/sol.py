@@ -51,8 +51,25 @@ class Solution(object):
 
         return len(nums) + 1
 
+    def test(self, nums):
+        i = 0
+
+        while i < len(nums):
+            j = nums[i] - 1
+
+            if nums[i] > 0 and nums[i] <= len(nums) and nums[i] != nums[j]:
+                nums[i], nums[j] = nums[j], nums[i]
+            else:
+                i += 1
+
+        for i in range(len(nums)):
+            if nums[i] != i + 1:
+                return i + 1
+
+        return len(nums) + 1
+
 if __name__ == '__main__':
     s = Solution()
     nums = [2]
-    ans = s.firstMissingPositive(nums)
+    ans = s.test(nums)
     print('ans:', ans)
